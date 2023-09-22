@@ -1,0 +1,27 @@
+package AcessModifier;
+
+public class Acess2 {
+
+
+
+	public static void main(String[] args) {
+	
+	
+		
+	Acess1 obj = new Acess1();
+		
+	System.out.println(obj.hours);
+	System.out.println(	obj.mins);
+
+
+	
+	System.out.println(obj.name);
+	System.out.println(obj.tool);
+	
+
+	System.out.println(obj.x);
+	System.out.println(obj.z);
+
+	}
+
+}
