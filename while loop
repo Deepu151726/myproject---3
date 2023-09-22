@@ -1,0 +1,24 @@
+package javaprogram;
+
+public class Whileloop {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	
+	  int i = 1;
+	  
+	  //start the loop
+	  while(i<=10) {
+		  
+		  // loop statements
+		  
+		  System.out.println(i);
+		  i++;
+		  
+	  }
+      
+	  System.out.println("printed values from 1 to 10");
+       
+    }
+}
