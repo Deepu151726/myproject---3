@@ -1,0 +1,29 @@
+package javaprogram;
+
+public class Datatypes {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+
+
+
+//comments in java program
+//java program will be written with in class{}
+//java program will have a main method
+//what ever code we have to excute,we put it in main method
+//differnt data type:int,double,char,boolean,string
+ int var1 =10;
+ double var2 =2.3;
+ char var3 ='A';
+ String var4 ="selenium";
+ boolean var5 =true;
+ 
+ System.out.println("The vale of varible var1: " + var1);
+ System.out.println("The vale of varible var2: " + var2);
+ System.out.println("The vale of varible var3: " + var3);
+ System.out.println("The vale of varible var4: " + var4);
+ System.out.println("The vale of varible var5: " + var5);
+ 
+	}
+}
