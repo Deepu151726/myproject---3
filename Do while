@@ -1,0 +1,17 @@
+package javaprogram;
+
+public class Dowhileloop {
+
+	public static void main (String[] arg) {
+		 
+		int i = 1;
+		do {
+			System.out.println("Today is wednesday");
+			i++;
+		}
+		while(i<=7);
+		System.out.println("printed the messages.i am out of loop");
+		
+		}
+	}
+
