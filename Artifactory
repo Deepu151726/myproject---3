@@ -1,0 +1,4 @@
+Integrating Artifactory with Jenkins
+Click on plugin section to download Artifactory plugin
+Once plugins have been installed, you will configure Jenkins to integrate with Artifactory
+GO to managejenkins > System > scroll down to Jfrog section
