@@ -1,0 +1,69 @@
+This section will guide you to:
+●	Install and configure Maven for Selenium Project in Eclipse.
+
+This guide has mainly four sub-sections, namely:
+1.14.1 Installing Maven in Eclipse
+1.14.2 Creating a Maven project
+1.14.3 Adding Maven dependencies
+1.14.4 Pushing the code to your GitHub repositories
+
+Step 1.14.1: Installing Maven in Eclipse
+a.	Maven integration for Eclipse is already installed in your Practice lab. Refer to QA to QE lab guide for Phase 2 for more information.
+
+Step 1.14.2: Creating a Maven project
+a.	Open Eclipse.
+b.	Click on File->New->Maven project.
+ 
+c.	Select the default workspace location.
+d.	Click on Next.
+ 
+e.	Select the Maven archetype as maven-archetype-webapps and click on Next.
+ 
+
+f.	Enter the Group ID and Artifact ID and click on Finish.
+ 
+
+g.	You are all set. The new Maven structure will look like the below screenshot:
+ 
+
+Step 1.14.3: Adding Maven Dependency
+
+●	If we are using the Selenium web driver, then we need to specify the Selenium web driver dependencies to our pom.xml.
+
+a.	Go to Maven Repository: https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java/3.14.0
+b.	Copy the dependency.
+ 
+c.	Go to Eclipse.
+d.	Open the Pom.xml file from the project. 
+e.	Paste the dependency in the Pom.xml file:
+ 
+
+●	 If we are using TestNG, then we need to specify the TestNG dependencies to our pom.xml
+a.	  Go to the Maven Repository: https://mvnrepository.com/artifact/org.testng/testng/6.8
+b.	   Copy the dependency.
+
+ 
+
+c.	  Go to Eclipse.
+d.	  Open the Pom.xml file from the project. 
+e.	  Paste the dependency in the Pom.xml file:
+
+          
+
+  
+f.	This is what the Maven dependencies will look like in the pom.xml file.
+ 
+
+Step 1.14.4: Pushing the code to your GitHub repositories
+Open your command prompt and navigate to the folder where you have created your files.
+cd <folder path>
+Initialize your repository using the following command:
+git init
+Add all the files to your git repository using the following command:
+git add . 
+Commit the changes using the following command:
+git commit .  -m “Changes have been committed.”
+Push the files to the folder you initially created using the following command:
+git push -u origin master
+
+
