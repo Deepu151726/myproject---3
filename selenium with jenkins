@@ -1,0 +1,38 @@
+●	To Integrate Selenium WebDriver with Jenkins 
+
+Development Environment: 
+●	Jenkins
+●	Selenium jars
+
+This guide has four sub-sections, namely:
+1	Creating a Jenkins Pipeline job
+2	Integrating Selenium Webdriver with Jenkins
+3	Pushing the code into GitHub repositories
+
+Step 2.4.1: Creating a Jenkins Pipeline job
+●	Java 1.8 is already installed in your practice lab. 
+●	Jenkins.war file is already present in your practice lab in directory /usr/share/jenkins.
+●	Go to the jenkins.war location. Now, start Jenkins by using the following command on command prompt: java -jar jenkins.war.
+●	Open your browser and type- localhost:8080.
+●	Enter the password.
+●	Create a job. 
+●	Enter the name.
+●	Select the Pipeline.
+●	Now, click on OK.
+ 
+
+Step 2.4.2: Integrating Selenium WebDriver with Jenkins
+●	Go to the Selenium script location.
+●	Add all the Selenium libraries.
+ 
+
+●	Create a text file run.bat and keep it within double quotation marks.
+ 
+●	Go to the Jenkins Pipeline job.
+●	Pass the Selenium script location.
+●	Write a groovy script in Pipeline.
+●	Click on Apply and then Save.
+ 
+●	Now, click on Build Now.
+ 
+
