@@ -1,0 +1,42 @@
+Gherkin Keywords:
+==========================================
+
+This section will guide you to :
+●	Understand the types of Gherkin keywords
+
+Development Environment:
+●	JRE: OpenJDK Runtime Environment 11.0.2
+●	Eclipse IDE for Enterprise Java Developers v2019-03 (4.11.0)
+●	TestNG
+●	Selenium jars
+●	Cucumber jars
+
+This guide has two subsections, namely:
+5.2.1 Demonstrating Gherkin keywords with example
+5.2.2 Pushing the code to your GitHub repositories
+
+Step 5.2.1: Demonstrating Gherkin keywords with example.
+The following are the keywords used in Gherkin:
+●	Feature: This gives information on the high-level business functionality and the purpose of application under test. Everybody should be able to understand the intent of feature file by reading the first feature step.
+Feature: LogIn Action Test
+Description: This feature will test a LogIn and LogOut functionality
+●	Scenario: Basically, a scenario represents a particular functionality which is under test. By seeing the scenario, user should be able to understand the intent behind the scenario and test. 
+Scenario: Successful Login with Valid Credentials
+     Given User is on Home Page
+     When User Navigate to LogIn Page
+     And User enters UserName and Password
+     Then Message displayed Login Successfully
+
+Step 5.2.2: Pushing the code to your GitHub repositories.
+Open your command prompt and navigate to the folder where you have created your files
+cd <folder path>
+Initialize your repository using the following command:
+git init
+Add all the files to your git repository using the following command:
+git add . 
+Commit the changes using the following command:
+git commit .  -m “Changes have been committed.”
+Push the files to the folder you initially created using the following command:
+git push -u origin master
+
+
