@@ -1,0 +1,107 @@
+Cucumber Setup: Maven, Extent Reports, Cucumber and Eclipse Plugin
+============================================================================
+
+This section will guide you to:
+
+●	Set up Cucumber eclipse plugin
+●	Set up Maven project 
+●	Set up Extent report 
+
+Development Environment:
+●	JRE: OpenJDK Runtime Environment 11.0.2
+●	Eclipse IDE for Enterprise Java Developers v2019-03 (4.11.0)
+●	TestNG
+●	Selenium jars
+●	Cucumber jars
+
+This guide has four subsections, namely:
+5.1.1 Configuring Cucumber Eclipse
+5.1.2 Configuring Cucumber with Maven project 
+5.1.3 Configuring Cucumber extent report
+5.1.4 Pushing the code to your GitHub repositories
+
+Step 5.1.1: Configuring Cucumber Eclipse
+Cucumber jar files are already present in your practice lab. Refer to the lab guide for Phase 2 for more information.
+●	 Launch Eclipse.
+●	 Create Java Project. 
+●	 Go to Java Project and create a folder “jars.”
+●	 Add all the downloaded jars to the “Jars” folder. 
+●	 Select the Created Project → Right Click → Build path → Configure Build path →Click on Libraries → Add JARs →Select all the jars from “Jars” folder → Click on Apply → Add Library → Select TestNG → Click on Apply → Click on Finish.
+
+Step 5.1.2: Configuring Cucumber  with Maven Project
+●	Create a Maven Project.
+✧	Go to File → New → Others → Maven → Maven Project → Next. 
+✧	Provide group ID (group ID will identify your project uniquely across all projects). 
+✧	Provide artifact ID (artifact ID is the name of the jar without version. You can choose any name, which is in lowercase). Click on Finish.
+●	Open pom.xml.
+✧	Go to the package explorer on the left-hand side of Eclipse. 
+✧	Expand the created project. 
+✧	Locate the pom.xml file. 
+✧	Right-click and select the option, open with “Text Editor.”
+
+●	Adding dependencies to the project: This will indicate Maven about the jar files to be downloaded from the central repository to the local repository. 
+✧	Open the pom.xml in the edit mode, create dependencies tag (<dependencies></dependencies>), inside the project tag. 
+✧	Inside the dependencies tag, create dependency tag (<dependency></dependency>). 
+✧	Copy the dependency tag for the following from Maven Repository. 
+✧	Selenium Webdriver
+✧	Cucumber-Core jar 
+✧	Cucumber-Java jar 
+✧	Cucumber-TestNG jar  
+✧	Provide the information of all copied dependencies within the dependency tag.
+●	Verify binaries.
+✧	Once the pom.xml is edited successfully, save it. 
+✧	Go to Project → Clean.  After a few minutes, you will be able to see a Maven repository.
+
+Step 5.1.3: Configuring Cucumber Extent Report
+●	Add below Cucumber Extent Report library to Maven project.
+<dependency>
+<groupId>com.aventstack</groupId>
+<artifactId>extentreports</artifactId>
+<version>3.0.6</version>
+</dependency>
+
+<dependency>
+<groupId>com.vimalselvam</groupId>
+<artifactId>cucumber-extentsreport</artifactId>
+<version>3.0.2</version>
+</dependency>
+●	Add Extent Config to the project.
+Extent Config is required by the Cucumber Extent Report plugin to read the report 	configuration. This gives the capability to set many useful settings to the report from the XML configuration file.
+●	Create a New File and name it as extent-config.xml by right clicking on the configs folder in the project. 
+●	Read the extent-config.xml path.
+✧	Make an entry for the path of the config in the Configuration.properties file.
+reportConfigPath=C:/ToolsQA/CucumberFramework/configs/extent-config.xml
+✧	Write a method getReportConfigPath() in the ConfigFileReader class to return the extent report config file path.
+public String getReportConfigPath(){
+String reportConfigPath = properties.getProperty("reportConfigPath");
+if(reportConfigPath!= null) return reportConfigPath;
+else throw new RuntimeException("Report Config Path not specified in the 	Configuration.properties file for the Key:reportConfigPath");
+}
+●	Modify TestRunner to Implement Cucumber Extent Reporter
+✧	Modify the runner class and add com.cucumber.listener.ExtentCucumberFormatter:output/report.html as a plugin followed by the report file as input. This should be done within the @CucumberOptions annotation.
+@CucumberOptions( plugin = 	{“com.cucumber.listener.ExtentCucumberFormatter:target/cucumber-	reports/report.html”})
+The above setup will generate the report in the output directory with the name 	report.html.
+●	Write extent reports
+Add a method writeExtentReport() in the TestRunner class to write the report.
+@AfterClass
+public static void writeExtentReport() {
+Reporter.loadXMLConfig(new 	File(FileReaderManager.getInstance().getConfigReader().getReportConfigPath()));
+}
+●	Sample extent report
+ 
+Step 5.1.4: Pushing the code to your GitHub repositories
+Open your command prompt and navigate to the folder where you have created your files
+cd <folder path>
+Initialize your repository using the following command:
+git init
+Add all the files to your git repository using the following command:
+git add . 
+Commit the changes using the following command:
+git commit .  -m “Changes have been committed.”
+Push the files to the folder you initially created using the following command:
+git push -u origin master
+
+
+
+
+
