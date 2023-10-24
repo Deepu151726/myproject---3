@@ -1,0 +1,122 @@
+Feature: Amazon Functionality Automation
+
+  Background: 
+    Given I am on the Amazon homepage
+    Then I click on the Sign in link
+    When I enter username and password
+    Then I click on login button
+     
+ 
+  Scenario: Login to Amazon
+    Given I am on the Amazon homepage
+    When I click on the Sign in link
+    And I enter my username and password
+    Then I click on login button
+    Then I should be logged into my Amazon account
+
+  Scenario: Search for a Product
+    Given I am on the Amazon homepage
+    When I enter "Iphone" into the search bar
+    And I click the search button
+    Then I should see a list of  products
+
+  Scenario: Add a Product to Cart
+    Given I am on the Amazon homepage
+    When I search for Iphone 13
+    And I add the product to the shopping cart
+    Then I should see the product in my shopping cart
+===========================================================================
+
+package steps;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.And;
+
+public class Amoazonproject {
+    WebDriver driver;
+
+    @Given("I am on the Amazon homepage")
+    public void i_am_on_the_amazon_homepage() {
+    	driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://www.amazon.in/gp/css/homepage.html?from=hz");   
+    }
+
+    @When("I click on the Sign in link")
+    public void i_click_on_the_link(String linkText) {
+        WebElement element = driver.findElement(By.linkText(linkText));
+        element.click();
+    }
+
+    @When("I enter {string} into the search bar")
+    public void i_enter_into_the_search_bar(String searchQuery) {
+        WebElement searchBox = driver.findElement(By.id("twotabsearchtextbox"));
+        searchBox.sendKeys(searchQuery);
+    }
+
+    @When("I click the search button")
+    public void i_click_the_search_button() {
+        WebElement searchButton = driver.findElement(By.id("nav-search-submit-button"));
+        searchButton.click();
+    }
+
+    @And("I enter my username and password")
+	public void i_enter_username_and_password() {
+ 	   
+  	  driver.findElement(By.xpath("//input[@name='id']")).sendKeys("admin");
+  	  driver.findElement(By.xpath("//input[@name='num']")).sendKeys("admin@123");
+		
+		
+		
+    }
+
+    @Then("I click on Login button")
+	public void i_click_on_login_button() throws InterruptedException {
+	   
+		driver.findElement(By.xpath("//input[@value='Login']")).click();
+		Thread.sleep(1500);
+    }
+
+    @Then("I should be logged into my Amazon account")
+    public void i_should_be_logged_into_my_amazon_account() {
+    	
+    	WebElement loggedInUserName = driver.findElement(By.id("nav-link-accountList"));
+
+    	    System.out.println("Successfully logged into Amazon.");
+    
+    }
+
+    @Then("I should see a list of  products")
+    public void i_should_see_a_list_of_products(String product) {
+    	List<WebElement> productListingElements = driver.findElements(By.cssSelector("div.s-result-item"));
+    	
+    	System.out.println("A list of products is displayed on the page.");
+    }
+    @When("I search for Iphone 13")
+    public void i_search_for(String string) {
+    	WebElement searchBox = driver.findElement(By.id("//*[@id=\"nav-flyout-searchAjax\"]/div[2]/div/div[1]/div[1]/div/div"));
+    	searchBox.sendKeys("iPhone 13");
+    }
+
+    @When("I add the product to the shopping cart")
+    public void i_add_the_product_to_the_shopping_cart() {
+    	WebElement addToCartButton = driver.findElement(By.id("add-to-cart-button"));
+    	addToCartButton.click();
+       
+    }
+
+    @Then("I should see the product in my shopping cart")
+    public void i_should_see_the_product_in_my_shopping_cart() {
+    	List<WebElement> cartProducts = driver.findElements(By.cssSelector(".sc-product-title"));
+        
+    }
+}
