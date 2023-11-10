@@ -1,0 +1,34 @@
+package RestAssureScripts;
+
+import org.json.JSONObject;
+import org.testng.annotations.Test;
+
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+
+public class Script004PayLoadJSON {
+
+	//Send the body with the content type as Json
+	//Sending Json data directly from test method
+	@Test
+	public void postUsingJson() {
+		JSONObject body = new JSONObject();
+		
+		body.put("name","john");
+		body.put("salary","1234567");
+		body.put("age","23");
+		RestAssured.given()
+		.baseUri("https://dummy.restapiexample.com/api/v1")//UrL
+		//.basePath("/create")//request
+		.contentType(ContentType.JSON)
+		.body(body)
+		.when()
+		.post("/create")
+		.then()
+		.statusCode(200).log().all();
+		
+		
+	}
+
+	
+}
